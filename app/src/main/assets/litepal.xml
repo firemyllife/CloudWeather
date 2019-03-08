@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="cloud_weather" />
+    <version value="1"/>
+    <list>
+        <mapping class="com.example.administrator.cloud.db.Province"/>
+        <mapping class="com.example.administrator.cloud.db.City"/>
+        <mapping class="com.example.administrator.cloud.db.County"/>
+    </list>
+</litepal>
