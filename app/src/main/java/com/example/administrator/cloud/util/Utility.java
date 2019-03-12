@@ -18,13 +18,13 @@ public class Utility {
             try {
                 JSONArray allprovinces = new JSONArray(response);
                 for (int i=0;i<allprovinces.length();i++){
-                                JSONObject object = allprovinces.getJSONObject(i);
-                Province province = new Province();
-                province.setProvinceName(object.getString("name"));
-                province.setProvinceCode(object.getInt("id"));
-                province.save();
-            }
-
+                    JSONObject object = allprovinces.getJSONObject(i);
+                    Province province = new Province();
+                    province.setProvinceName(object.getString("name"));
+                    province.setProvinceCode(object.getInt("id"));
+                    province.save();
+                }
+                return true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -45,8 +45,9 @@ public class Utility {
                      city.setCityName(object.getString("name"));
                      city.setCitycode(object.getInt("id"));
                      city.setProvinceId(provinceId);
+                     city.save();
                  }
-
+                 return true;
              } catch (JSONException e) {
                  e.printStackTrace();
              }
@@ -66,8 +67,9 @@ public class Utility {
                     county.setCountyName(object.getString("name"));
                     county.setWeatherId(object.getInt("id"));
                     county.setCityId(cityId);
+                    county.save();
                 }
-
+                return true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }

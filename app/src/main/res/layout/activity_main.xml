@@ -21,10 +21,10 @@
         android:layout_height="match_parent">
 
         <fragment
-            android:id="@+id/choose_area_fragment"
-            android:name="com.example.administrator.cloud.fragment.ChooseAreaFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </FrameLayout>
+    android:id="@+id/choose_area_fragment"
+    android:name="com.example.administrator.cloud.fragment.ChooseAreaFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+</FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
