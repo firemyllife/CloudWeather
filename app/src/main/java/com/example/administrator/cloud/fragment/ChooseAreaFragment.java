@@ -1,6 +1,7 @@
 package com.example.administrator.cloud.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.cloud.R;
+import com.example.administrator.cloud.WeatherActivity;
 import com.example.administrator.cloud.db.City;
 import com.example.administrator.cloud.db.County;
 import com.example.administrator.cloud.db.Province;
@@ -82,7 +84,14 @@ public class ChooseAreaFragment extends Fragment {
                 }else if(currentLevel == LEVEL_CITY){
                    selectedCity = cityList.get(position);
                    queryCounties();
+                }else if(currentLevel == LEVEL_COUNTY){//实现从地区到天气页面的转变
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(),WeatherActivity.class);
+                    intent.putExtra("weather_id",weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
+
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
