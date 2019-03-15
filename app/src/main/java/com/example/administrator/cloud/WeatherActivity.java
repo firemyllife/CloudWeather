@@ -1,5 +1,6 @@
 package com.example.administrator.cloud;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.administrator.cloud.gson.Forecast;
 import com.example.administrator.cloud.gson.Weather;
+import com.example.administrator.cloud.service.AutoUpdateService;
 import com.example.administrator.cloud.util.HttpUtils;
 import com.example.administrator.cloud.util.Utility;
 
@@ -202,12 +204,16 @@ public class WeatherActivity extends AppCompatActivity {
             aqiText.setText(weather.aqi.city.pm25);
         }
         String comfort = "舒适度："+weather.suggestion.comfort.info;
-        String carwash = "洗车指数："+weather.suggestion.carWash.info;
+        String carWash = "洗车指数："+weather.suggestion.carWash.info;
         String sport = "运动建议："+weather.suggestion.sport.info;
         comfortText.setText(comfort);
-        carWashText.setText(carwash);
+        carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+
+        //触发定时任务
+        Intent intent = new Intent(this,AutoUpdateService.class);
+        startService(intent);
     }
 
     private void loadBingPic(){
